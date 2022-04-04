@@ -8,13 +8,10 @@
                 <div class="card-body text-dark">
                     <form method="post" @submit.prevent="guardarMatricula" @reset="nuevoMatricula">
                         <div class="row p-1">
+                            <div class="col col-md-2">Alumno:</div>
                             <div class="col col-md-2">
-                                Alumno:
-                            </div>
-                            <div class="col col-md-3">
-                                <alumno-component v-model="matricula.alumno" 
-                                    :options="alumnos" placeholder="Seleccione una alumno"/>
-                            </div>
+                                <input title="Ingrese el nombre del alumno" v-model="matricula.alumno" pattern="[0-9]{3,10}" required type="text" class="form-control">
+                        </div>
                         </div>
                         <div class="row p-1">
                             <div class="col col-md-2">Fecha de matricula:</div>
@@ -93,10 +90,7 @@
                     accion : 'nuevo',
                     mostrar_msg : false,
                     msg : '',
-                    alumno: {
-                    id: '',
-                    label: '',
-                    },
+                    alumno: '',
                     id : 0,
                     idMatricula : '',
                     fecham: '',

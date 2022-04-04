@@ -6334,19 +6334,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['form'],
   data: function data() {
@@ -6358,10 +6345,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         accion: 'nuevo',
         mostrar_msg: false,
         msg: '',
-        alumno: {
-          id: '',
-          label: ''
-        },
+        alumno: '',
         id: 0,
         idMatricula: '',
         fecham: '',
@@ -6882,8 +6866,7 @@ Vue.component('alumno-component', (__webpack_require__(/*! ./components/AlumnoCo
 Vue.component('docente-component', (__webpack_require__(/*! ./components/DocenteComponent.vue */ "./resources/js/components/DocenteComponent.vue")["default"]));
 Vue.component('materia-component', (__webpack_require__(/*! ./components/MateriaComponent.vue */ "./resources/js/components/MateriaComponent.vue")["default"]));
 Vue.component('matricula-component', (__webpack_require__(/*! ./components/MatriculaComponent.vue */ "./resources/js/components/MatriculaComponent.vue")["default"]));
-Vue.component('notas-component', (__webpack_require__(/*! ./components/NotasComponent.vue */ "./resources/js/components/NotasComponent.vue")["default"])); //Vue.component('anotar-component', require('./components/AnotarComponent.vue').default);
-
+Vue.component('notas-component', (__webpack_require__(/*! ./components/NotasComponent.vue */ "./resources/js/components/NotasComponent.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -31687,246 +31670,177 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "appAlumno" } }, [
-    _c("div", { staticClass: "card text-white", attrs: { id: "carAlumno" } }, [
-      _c("div", { staticClass: "card-header bg-primary" }, [
-        _vm._v("\r\n                Registro de Alumnos\r\n                "),
-        _c("button", {
-          staticClass: "btn-close text-end",
-          attrs: { type: "button" },
-          on: { click: _vm.cerrarForm },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body text-dark" }, [
-        _c(
-          "form",
-          {
-            attrs: { method: "post" },
-            on: {
-              submit: function ($event) {
-                $event.preventDefault()
-                return _vm.guardarAlumno.apply(null, arguments)
+  return _c("div", { attrs: { id: "appMatricula" } }, [
+    _c(
+      "div",
+      { staticClass: "card text-white", attrs: { id: "carMatricula" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body text-dark" }, [
+          _c(
+            "form",
+            {
+              attrs: { method: "post" },
+              on: {
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.guardarMatricula.apply(null, arguments)
+                },
+                reset: _vm.nuevoMatricula,
               },
-              reset: _vm.nuevoAlumno,
             },
-          },
-          [
-            _c("div", { staticClass: "row p-1" }, [
-              _c("div", { staticClass: "col col-md-2" }, [_vm._v("Codigo:")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col col-md-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.alumno.codigo,
-                      expression: "alumno.codigo",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    title: "Ingrese el codigo",
-                    pattern: "[0-9]{3,10}",
-                    required: "",
-                    type: "text",
-                  },
-                  domProps: { value: _vm.alumno.codigo },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.alumno, "codigo", $event.target.value)
-                    },
-                  },
-                }),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row p-1" }, [
-              _c("div", { staticClass: "col col-md-2" }, [_vm._v("Nombre:")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col col-md-3" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.alumno.nombre,
-                      expression: "alumno.nombre",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    title: "Ingrese el nombre",
-                    pattern: "[A-Za-zñÑáéíóúü ]{3,75}",
-                    required: "",
-                    type: "text",
-                  },
-                  domProps: { value: _vm.alumno.nombre },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.alumno, "nombre", $event.target.value)
-                    },
-                  },
-                }),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row p-1" }, [
-              _c("div", { staticClass: "col col-md-2" }, [
-                _vm._v("Direccion:"),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col col-md-3" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.alumno.direccion,
-                      expression: "alumno.direccion",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    title: "Ingrese la direccion",
-                    pattern: "[A-Za-zñÑáéíóúü ]{3,100}",
-                    required: "",
-                    type: "text",
-                  },
-                  domProps: { value: _vm.alumno.direccion },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.alumno, "direccion", $event.target.value)
-                    },
-                  },
-                }),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row p-1" }, [
-              _c("div", { staticClass: "col col-md-2" }, [_vm._v("Telefono:")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col col-md-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.alumno.telefono,
-                      expression: "alumno.telefono",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    title: "Ingrese el tel",
-                    pattern: "[0-9]{4}-[0-9]{4}",
-                    required: "",
-                    type: "text",
-                  },
-                  domProps: { value: _vm.alumno.telefono },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.alumno, "telefono", $event.target.value)
-                    },
-                  },
-                }),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row p-1" }, [
-              _c("div", { staticClass: "col col-md-2" }, [_vm._v("DUI:")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col col-md-2" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.alumno.dui,
-                      expression: "alumno.dui",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    title: "Ingrese el DUI",
-                    pattern: "[0-9]{8}-[0-9]{1}",
-                    required: "",
-                    type: "text",
-                  },
-                  domProps: { value: _vm.alumno.dui },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.alumno, "dui", $event.target.value)
-                    },
-                  },
-                }),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row p-1" }, [
-              _c("div", { staticClass: "col col-md-5 text-center" }, [
-                _vm.alumno.mostrar_msg
-                  ? _c(
-                      "div",
+            [
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [_vm._v("Alumno:")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _c("input", {
+                    directives: [
                       {
-                        staticClass:
-                          "alert alert-primary alert-dismissible fade show",
-                        attrs: { role: "alert" },
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.matricula.alumno,
+                        expression: "matricula.alumno",
                       },
-                      [
-                        _vm._v(
-                          "\r\n                                " +
-                            _vm._s(_vm.alumno.msg) +
-                            "\r\n                                "
-                        ),
-                        _c("button", {
-                          staticClass: "btn-close",
-                          attrs: {
-                            type: "button",
-                            "data-bs-dismiss": "alert",
-                            "aria-label": "Close",
-                          },
-                        }),
-                      ]
-                    )
-                  : _vm._e(),
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      title: "Ingrese el nombre del alumno",
+                      pattern: "[0-9]{3,10}",
+                      required: "",
+                      type: "text",
+                    },
+                    domProps: { value: _vm.matricula.alumno },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.matricula, "alumno", $event.target.value)
+                      },
+                    },
+                  }),
+                ]),
               ]),
-            ]),
-            _vm._v(" "),
-            _vm._m(0),
-          ]
-        ),
-      ]),
-    ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _vm._v("Fecha de matricula:"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.matricula.fecham,
+                        expression: "matricula.fecham",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      title: "Ingrese el fecha de matricula",
+                      pattern: "[0-9]{3,10}",
+                      required: "",
+                      type: "date",
+                    },
+                    domProps: { value: _vm.matricula.fecham },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.matricula, "fecham", $event.target.value)
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [_vm._v("Ciclo:")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.matricula.ciclo,
+                        expression: "matricula.ciclo",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      title: "Ingrese el ciclo",
+                      pattern: "[A-ZA-ZÑÑÁÉÍÓÚÜ ]{1,10}",
+                      required: "",
+                      type: "text",
+                    },
+                    domProps: { value: _vm.matricula.ciclo },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.matricula, "ciclo", $event.target.value)
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-5 text-center" }, [
+                  _vm.matricula.mostrar_msg
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "alert alert-primary alert-dismissible fade show",
+                          attrs: { role: "alert" },
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(_vm.matricula.msg) +
+                              "\n                            "
+                          ),
+                          _c("button", {
+                            staticClass: "btn-close",
+                            attrs: {
+                              type: "button",
+                              "data-bs-dismiss": "alert",
+                              "aria-label": "Close",
+                            },
+                          }),
+                        ]
+                      )
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(1),
+            ]
+          ),
+        ]),
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
       { staticClass: "card text-white", attrs: { id: "carBuscarMatricula" } },
       [
-        _vm._m(1),
+        _vm._m(2),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("table", { staticClass: "table table-dark table-hover" }, [
             _c("thead", [
               _c("tr", [
                 _c("th", { attrs: { colspan: "6" } }, [
-                  _vm._v("\r\n                                    Buscar: "),
+                  _vm._v("\n                            Buscar: "),
                   _c("input", {
                     directives: [
                       {
@@ -31952,7 +31866,7 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _vm._m(2),
+              _vm._m(3),
             ]),
             _vm._v(" "),
             _c(
@@ -32005,6 +31919,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header bg-primary" }, [
+      _vm._v("\n            Registro de Matriculas\n            "),
+      _c("button", {
+        staticClass: "btn-close text-end",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "alert",
+          "data-bs-target": "#carMatricula",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row m-2" }, [
       _c("div", { staticClass: "col col-md-5 text-center" }, [
         _c("input", {
@@ -32024,9 +31955,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header bg-primary" }, [
-      _vm._v(
-        "\r\n                    Busqueda de Matriculas\r\n                    "
-      ),
+      _vm._v("\n            Busqueda de Matriculas\n            "),
       _c("button", {
         staticClass: "btn-close",
         attrs: {
