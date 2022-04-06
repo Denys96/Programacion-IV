@@ -6345,7 +6345,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         accion: 'nuevo',
         mostrar_msg: false,
         msg: '',
-        alumno: '',
+        alumno: {
+          id: '',
+          label: ''
+        },
         id: 0,
         idMatricula: '',
         fecham: '',
@@ -31700,8 +31703,8 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.matricula.alumno,
-                        expression: "matricula.alumno",
+                        value: _vm.matricula.fecham,
+                        expression: "matricula.fecham",
                       },
                     ],
                     staticClass: "form-control",
@@ -31711,13 +31714,13 @@ var render = function () {
                       required: "",
                       type: "text",
                     },
-                    domProps: { value: _vm.matricula.alumno },
+                    domProps: { value: _vm.matricula.fecham },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.matricula, "alumno", $event.target.value)
+                        _vm.$set(_vm.matricula, "fecham", $event.target.value)
                       },
                     },
                   }),

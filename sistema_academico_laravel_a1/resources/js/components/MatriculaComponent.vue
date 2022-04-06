@@ -8,9 +8,9 @@
                 <div class="card-body text-dark">
                     <form method="post" @submit.prevent="guardarMatricula" @reset="nuevoMatricula">
                         <div class="row p-1">
-                            <div class="col col-md-2">Alumno:</div>
+                             <div class="col col-md-2">Alumno:</div>
                             <div class="col col-md-2">
-                                <input title="Ingrese el nombre del alumno" v-model="matricula.alumno" pattern="[0-9]{3,10}" required type="text" class="form-control">
+                            <input title="Ingrese el nombre del alumno" v-model="matricula.fecham" pattern="[0-9]{3,10}" required type="text" class="form-control">
                         </div>
                         </div>
                         <div class="row p-1">
@@ -90,7 +90,10 @@
                     accion : 'nuevo',
                     mostrar_msg : false,
                     msg : '',
-                    alumno: '',
+                    alumno: {
+                    id: '',
+                    label: '',
+                    },
                     id : 0,
                     idMatricula : '',
                     fecham: '',

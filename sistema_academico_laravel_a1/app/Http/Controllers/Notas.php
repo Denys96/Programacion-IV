@@ -35,7 +35,7 @@ class Notas extends Controller
      */
     public function store(Request $request)
     {
-        $id = nota::create($request->all())->id;//insert into matricula...
+        $id = Nota::create($request->all())->id;//insert into matricula...
         return response()->json(['id'=>$id], 200);
     }
 
