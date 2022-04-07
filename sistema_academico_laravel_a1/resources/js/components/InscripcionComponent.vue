@@ -2,15 +2,16 @@
   <div id="appInscripcion">
     <div class="row">
       <div class="col col-md-4">
-        <div class="card text-white" id="carInscripcion">
+        <div
+          class="card text-white"
+          id="carInscripcion"
+        >
           <div class="card-header bg-primary">
-            Registro de Inscripcions
+            Registro de Inscripciones
             <button
               type="button"
               class="btn-close text-end"
-              data-bs-dismiss="alert"
-              data-bs-target="#carInscripcion"
-              aria-label="Close"
+              @click="cerrarForm"
             ></button>
           </div>
           <div class="card-body text-dark">
@@ -20,143 +21,101 @@
               @reset="nuevoInscripcion"
             >
               <div class="row p-1">
-                <div class="col col-md-3">Codigo:</div>
+                <div class="col col-md-3">Codigo</div>
                 <div class="col col-md-4">
                   <input
-                    title="Ingrese el codigo"
                     v-model="inscripcion.codigo"
-                    pattern="[0-9]{3,10}"
+                    placeholder="000"
+                    pattern="[A-Z0-9]{3,10}"
                     required
-                    type="text"
+                    title="Codigo de inscripcion"
                     class="form-control"
-                  />
+                    type="text"
+                  >
                 </div>
               </div>
               <div class="row p-1">
-                <div class="col col-md-3">Ciclo:</div>
+                <div class="col col-md-3">Nombre</div>
                 <div class="col">
-                  <input list="ciclo" v-model="inscripcion.ciclo"/>
-                  <datalist id="ciclo">
-                    <option value="Ciclo I"></option>
-                    <option value="Ciclo II"></option>
-                    <option value="Ciclo III"></option>
-                    <option value="Ciclo IV"></option>
-                    <option value="Ciclo V"></option>
-                    <option value="Ciclo VI"></option>
-                    <option value="Ciclo VII"></option>
-                    <option value="Ciclo VIII"></option>
-                    <option value="Ciclo IX"></option>
-                    <option value="Ciclo X"></option>
-                  </datalist>
-                </div>
-              </div>
-              <div class="row p-1">
-                <div class="col col-md-3">Materia 1:</div>
-                <div class="col">
-                  <input list="materia_1" v-model="inscripcion.materia_1" />
-                  <datalist id="materia_1">
-                    <option value="Programacion II"></option>
-                    <option value="Programacion VI"></option>
-                    <option value="Matematicas III"></option>
-                    <option value="Matematicas I"></option>
-                    <option value="Ingenieria de Software"></option>
-                    <option value="Infraestructura Tecnologica"></option>
-                    <option value="Principios de Electronica"></option>
-                    <option value="Admon de Bases de Datos II"></option>
-                    <option value="Formacion Transversal"></option>
-                    <option value="Sistemas Operativos"></option>
-                    <option value="Informatica y Sociedad"></option>
-                  </datalist>
-                </div>
-              </div>
-              <div class="row p-1">
-                <div class="col col-md-3">Materia 2:</div>
-                <div class="col">
-                  <input list="materia_2" v-model="inscripcion.materia_2" />
-                  <datalist id="materia_2">
-                    <option value="Programacion II"></option>
-                    <option value="Programacion VI"></option>
-                    <option value="Matematicas III"></option>
-                    <option value="Matematicas I"></option>
-                    <option value="Ingenieria de Software"></option>
-                    <option value="Infraestructura Tecnologica"></option>
-                    <option value="Principios de Electronica"></option>
-                    <option value="Admon de Bases de Datos II"></option>
-                    <option value="Formacion Transversal"></option>
-                    <option value="Sistemas Operativos"></option>
-                    <option value="Informatica y Sociedad"></option>
-                  </datalist>
-                </div>
-              </div>
-              <div class="row p-1">
-                <div class="col col-md-3">Materia 3:</div>
-                <div class="col">
-                  <input list="materia_3" v-model="inscripcion.materia_3" />
-                  <datalist id="materia_3">
-                    <option value="Programacion II"></option>
-                    <option value="Programacion VI"></option>
-                    <option value="Matematicas III"></option>
-                    <option value="Matematicas I"></option>
-                    <option value="Ingenieria de Software"></option>
-                    <option value="Infraestructura Tecnologica"></option>
-                    <option value="Principios de Electronica"></option>
-                    <option value="Admon de Bases de Datos II"></option>
-                    <option value="Formacion Transversal"></option>
-                    <option value="Sistemas Operativos"></option>
-                    <option value="Informatica y Sociedad"></option>
-                  </datalist>
-                </div>
-              </div>
-              <div class="row p-1">
-                <div class="col col-md-3">Materia 4:</div>
-                <div class="col">
-                  <input list="materia_4" v-model="inscripcion.materia_4" />
-                  <datalist id="materia_4">
-                    <option value="Programacion II"></option>
-                    <option value="Programacion VI"></option>
-                    <option value="Matematicas III"></option>
-                    <option value="Matematicas I"></option>
-                    <option value="Ingenieria de Software"></option>
-                    <option value="Infraestructura Tecnologica"></option>
-                    <option value="Principios de Electronica"></option>
-                    <option value="Admon de Bases de Datos II"></option>
-                    <option value="Formacion Transversal"></option>
-                    <option value="Sistemas Operativos"></option>
-                    <option value="Informatica y Sociedad"></option>
-                  </datalist>
-                </div>
-              </div>
-              <div class="row p-1">
-                <div class="col col-md-3">Materia 5:</div>
-                <div class="col">
-                  <input list="materia_5" v-model="inscripcion.materia_5" />
-                  <datalist id="materia_5">
-                    <option value="Programacion II"></option>
-                    <option value="Programacion VI"></option>
-                    <option value="Matematicas III"></option>
-                    <option value="Matematicas I"></option>
-                    <option value="Ingenieria de Software"></option>
-                    <option value="Infraestructura Tecnologica"></option>
-                    <option value="Principios de Electronica"></option>
-                    <option value="Admon de Bases de Datos II"></option>
-                    <option value="Formacion Transversal"></option>
-                    <option value="Sistemas Operativos"></option>
-                    <option value="Informatica y Sociedad"></option>
-                  </datalist>
-                </div>
-              </div>
-
-              <div class="row p-1">
-                <div class="col col-md-3">Fecha de Inscripcion:</div>
-                <div class="col col-md-4">
                   <input
-                    title="Ingrese la fecha"
-                    v-model="inscripcion.fecha"
-                    pattern="{0000-00-00}"
+                    v-model="inscripcion.nombre"
+                    placeholder="Nombre"
+                    pattern="[A-Za-zÑñáéíóú ]{3,75}"
                     required
-                    type="date"
-                    class="form-control form-control-sm"
-                  />
+                    title="Nombre de inscripcion"
+                    class="form-control"
+                    type="text"
+                  >
+                </div>
+              </div>
+              <div class="row p-1">
+                <div class="col col-md-3">Materia 1</div>
+                <div class="col">
+                  <input
+                    v-model="inscripcion.materia1"
+                    placeholder="Materia 1"
+                    pattern="[A-Za-z0-9Ññáéíóú ]{3,100}"
+                    required
+                    title="Materia de inscripcion"
+                    class="form-control"
+                    type="text"
+                  >
+                </div>
+              </div>
+              <div class="row p-1">
+                <div class="col col-md-3">Materia 2</div>
+                <div class="col">
+                  <input
+                    v-model="inscripcion.materia2"
+                    placeholder="Materia 2"
+                    pattern="[A-Za-z0-9Ññáéíóú ]{3,100}"
+                    required
+                    title="Materia de inscripcion"
+                    class="form-control"
+                    type="text"
+                  >
+                </div>
+              </div>
+              <div class="row p-1">
+                <div class="col col-md-3">Materia 3</div>
+                <div class="col">
+                  <input
+                    v-model="inscripcion.materia3"
+                    placeholder="Materia 3"
+                    pattern="[A-Za-z0-9Ññáéíóú ]{3,100}"
+                    required
+                    title="Materia de inscripcion"
+                    class="form-control"
+                    type="text"
+                  >
+                </div>
+              </div>
+              <div class="row p-1">
+                <div class="col col-md-3">Materia 4</div>
+                <div class="col">
+                  <input
+                    v-model="inscripcion.materia4"
+                    placeholder="Materia 4"
+                    pattern="[A-Za-z0-9Ññáéíóú ]{3,100}"
+                    required
+                    title="Materia de inscripcion"
+                    class="form-control"
+                    type="text"
+                  >
+                </div>
+              </div>
+              <div class="row p-1">
+                <div class="col col-md-3">Materia 5</div>
+                <div class="col">
+                  <input
+                    v-model="inscripcion.materia5"
+                    placeholder="Materia 5"
+                    pattern="[A-Za-z0-9Ññáéíóú ]{3,100}"
+                    required
+                    title="Materia de inscripcion"
+                    class="form-control"
+                    type="text"
+                  >
                 </div>
               </div>
               <div class="row p-1">
@@ -173,92 +132,126 @@
                       data-bs-dismiss="alert"
                       aria-label="Close"
                     ></button>
-                  </div>
                 </div>
               </div>
-              <div class="row m-2">
-                <div class="col text-center">
+              <div class="row p-1">
+                <div class="col col-md-3">Fecha</div>
+                <div class="col">
                   <input
-                    class="btn btn-success"
-                    type="submit"
-                    value="Guardar"
+                    title="Ingrese la fecha"
+                    v-model="inscripcion.fecha"
+                    pattern="{0000-00-00}"
+                    required
+                    type="date"
+                    class="form-control form-control-sm"
                   />
-                  <input class="btn btn-warning" type="reset" value="Nuevo" />
                 </div>
               </div>
-            </form>
+              <div class="row p-1">
+                <div class="col col-md-3">Ciclo</div>
+                <div class="col">
+                  <input
+                    v-model="inscripcion.ciclo"
+                    placeholder="ciclo"
+                    pattern="[A-Za-zÑñáéíóú ]{3,75}"
+                    required
+                    title="Nombre de inscripcion"
+                    class="form-control"
+                    type="text"
+                  >
+                </div>
+              </div>
           </div>
-        </div>
-      </div>
-      <div class="col col-md-8">
-        <div class="card text-white" id="carBuscarInscripcion">
-          <div class="card-header bg-primary">
-            Busqueda de Inscripcions
-            <button
-              type="button"
-              @click="cerrarForm"
-              class="btn-close"
-              data-bs-dismiss="alert"
-              data-bs-target="#carBuscarInscripcion"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="card-body">
-            <table class="table table-dark table-hover">
-              <thead>
-                <tr>
-                  <th colspan="9">
-                    Buscar:
-                    <input
-                      @keyup="buscandoInscripcion"
-                      v-model="buscar"
-                      placeholder="buscar aqui"
-                      class="form-control"
-                      type="text"
-                    />
-                  </th>
-                </tr>
-                <tr>
-                  <th>CODIGO</th>
-                  <th>CICLO</th>
-                  <th>MATERIA 1</th>
-                  <th>MATERIA 2</th>
-                  <th>MATERIA 3</th>
-                  <th>MATERIA 4</th>
-                  <th>MATERIA 5</th>
-                  <th>FECHA</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="item in inscripcions"
-                  @click="modificarInscripcion(item)"
-                  :key="item.idInscripcion"
+          <div class="row m-2">
+            <div class="col text-center">
+              <input
+                class="btn btn-success"
+                type="submit"
+                value="Guardar"
+              >
+                <input
+                  class="btn btn-warning"
+                  type="reset"
+                  value="Nuevo"
                 >
-                  <td>{{ item.codigo }}</td>
-                  <td>{{ item.materia_1 }}</td>
-                  <td>{{ item.materia_2 }}</td>
-                  <td>{{ item.materia_3 }}</td>
-                  <td>{{ item.materia_4 }}</td>
-                  <td>{{ item.materia_5 }}</td>
-                  <td>{{ item.fecha }}</td>
-                  <td>{{ item.matricula.label }}</td>
-                  <td>
-                    <button
-                      class="btn btn-danger"
-                      @click="eliminarInscripcion(item)"
-                    >
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            </div>
           </div>
-        </div>
+          </form>
       </div>
     </div>
+  </div>
+  <div class="col col-md-8">
+    <div
+      class="card text-white"
+      id="carBuscarInscripcion"
+    >
+      <div class="card-header bg-primary">
+        Busqueda de Inscripciones
+        <button
+          type="button"
+          @click="cerrarForm"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          data-bs-target="#carBuscarInscripcion"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="card-body">
+        <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th colspan="10">
+                Buscar:
+                <input
+                  @keyup="buscandoInscripcion"
+                  v-model="buscar"
+                  placeholder="buscar aqui"
+                  class="form-control"
+                  type="text"
+                >
+              </th>
+            </tr>
+            <tr>
+              <th>CODIGO</th>
+              <th>Nombre</th>
+              <th>Ciclo</th>
+              <th>Materia 1</th>
+              <th>Materia 2</th>
+              <th>Materia 3</th>
+              <th>Materia 4</th>
+              <th>Materia 5</th>
+              <th>Fecha_I</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="item in inscripciones"
+              @click='modificarInscripcion( item )'
+              :key="item.idInscripcion"
+            >
+              <td>{{inscripcion.codigo}}</td>
+              <td>{{inscripcion.nombre}}</td>
+              <td>{{inscripcion.ciclo}}</td>
+              <td>{{inscripcion.materia}}</td>
+              <td>{{inscripcion.materia2}}</td>
+              <td>{{inscripcion.materia3}}</td>
+              <td>{{inscripcion.materia4}}</td>
+              <td>{{inscripcion.materia5}}</td>
+              <td>{{inscripcion.fecha}}</td>
+              <td>
+                <button
+                  class="btn btn-danger"
+                  @click="eliminarInscripcion(item)"
+                >Eliminar</button>
+              </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  </div>
+  </div>
   </div>
 </template>
 
@@ -268,7 +261,7 @@ export default {
   data: () => {
     return {
       buscar: "",
-      inscripcions: [],
+      inscripciones: [],
       inscripcion: {
         accion: "nuevo",
         mostrar_msg: false,
@@ -276,14 +269,11 @@ export default {
         id: 0,
         idInscripcion: "",
         codigo: "",
-        materia1: "",
-        materia2: "",
-        materia3: "",
-        materia4: "",
-        materia5: "",
-        fecha: "",
-        ciclo: "",
-      },
+        nombre: "",
+        direccion: "",
+        telefono: "",
+        dui: ""
+      }
     };
   },
   methods: {
@@ -294,29 +284,31 @@ export default {
       await axios({
         method: metodo,
         url,
-        data: inscripcion,
+        data: inscripcion
       })
-        .then((resp) => {
+        .then(resp => {
           if (inscripcion.accion == "nuevo") {
             inscripcion.id = resp.data.id;
             this.insertarLocal(inscripcion); //actualizar el id del inscripcion que se genero en el servidor con laravel y mysql
           }
           this.inscripcion.msg = `Inscripcion procesado ${data.msg}`;
         })
-        .catch((err) => {
-          this.inscripcion.msg = `Error al procesar la inscripcion ${err}`;
+        .catch(err => {
+          this.inscripcion.msg = `Error al procesar el inscripcion ${err}`;
         });
     },
     insertarLocal(inscripcion) {
       let store = this.abrirStore("inscripcion", "readwrite"),
         query = store.put(inscripcion);
-      query.onsuccess = (e) => {
+      query.onsuccess = e => {
         this.nuevoInscripcion();
         this.obtenerDatos();
-        this.inscripcion.msg = "Inscripcion procesada con exito";
+        this.inscripcion.msg = "Inscripcion procesado con exito";
       };
-      query.onerror = (e) => {
-        this.inscripcion.msg = `Error al procesar la inscripcion ${e.target.error}`;
+      query.onerror = e => {
+        this.inscripcion.msg = `Error al procesar el inscripcion ${
+          e.target.error
+        }`;
       };
     },
     buscandoInscripcion() {
@@ -324,7 +316,7 @@ export default {
     },
     eliminarInscripcion(inscripcion) {
       if (
-        confirm(`Esta seguro de eliminar la inscripcion ${inscripcion.nombre}?`)
+        confirm(`Esta seguro de eliminar el inscripcion ${inscripcion.nombre}?`)
       ) {
         inscripcion.accion = "eliminar";
         let store = this.abrirStore("inscripcion", "readwrite"),
@@ -332,13 +324,15 @@ export default {
           metodo = "DELETE",
           url = `/inscripcion/${inscripcion.id}`;
         this.sincronizarDatosServidor(inscripcion, metodo, url);
-        query.onsuccess = (e) => {
+        query.onsuccess = e => {
           this.nuevoInscripcion();
           this.obtenerDatos();
-          this.inscripcion.msg = "Inscripcion eliminada con exito";
+          this.inscripcion.msg = "Inscripcion eliminado con exito";
         };
-        query.onerror = (e) => {
-          this.inscripcion.msg = `Error al eliminar la inscripcion ${e.target.error}`;
+        query.onerror = e => {
+          this.inscripcion.msg = `Error al eliminar el inscripcion ${
+            e.target.error
+          }`;
         };
       }
       this.nuevoInscripcion();
@@ -362,36 +356,38 @@ export default {
     obtenerDatos(valor = "") {
       let store = this.abrirStore("inscripcion", "readonly"),
         data = store.getAll();
-      data.onsuccess = (e) => {
+      data.onsuccess = e => {
         if (data.result.length <= 0) {
           fetch(`inscripcion`, { credentials: "same-origin" })
-            .then((res) => res.json())
-            .then((data) => {
-              this.inscripcions = data;
-              data.map((inscripcion) => {
+            .then(res => res.json())
+            .then(data => {
+              this.inscripciones = data;
+              data.map(inscripcion => {
                 let store = this.abrirStore("inscripcion", "readwrite"),
                   query = store.put(inscripcion);
-                query.onsuccess = (e) => {
+                query.onsuccess = e => {
                   console.log(`Inscripcion ${inscripcion.nombre} guardado`);
                 };
-                query.onerror = (e) => {
+                query.onerror = e => {
                   console.log(
-                    `Error al guardar la inscripcion ${e.target.error}`
+                    `Error al guardar el inscripcion ${e.target.error}`
                   );
                 };
               });
             })
-            .catch((err) => {
-              this.inscripcion.msg = `Error al guardar la inscripcion ${err}`;
+            .catch(err => {
+              this.inscripcion.msg = `Error al guardar el inscripcion ${err}`;
             });
         }
-        this.inscripcions = data.result.filter(
-          (inscripcion) =>
+        this.inscripciones = data.result.filter(
+          inscripcion =>
             inscripcion.nombre.toLowerCase().indexOf(valor.toLowerCase()) > -1
         );
       };
-      data.onerror = (e) => {
-        this.inscripcion.msg = `Error al obtener las inscripciones ${e.target.error}`;
+      data.onerror = e => {
+        this.inscripcion.msg = `Error al obtener los inscripciones ${
+          e.target.error
+        }`;
       };
     },
     nuevoInscripcion() {
@@ -399,20 +395,17 @@ export default {
       this.inscripcion.msg = "";
       this.inscripcion.idInscripcion = "";
       this.inscripcion.codigo = "";
-      this.inscripcion.materia1 = "";
-      this.inscripcion.materia2 = "";
-      this.inscripcion.materia3 = "";
-      this.inscripcion.materia4 = "";
-      this.inscripcion.materia5 = "";
-      this.inscripcion.fecha = "";
-      this.inscripcion.ciclo = "";
+      this.inscripcion.nombre = "";
+      this.inscripcion.direccion = "";
+      this.inscripcion.telefono = "";
+      this.inscripcion.dui = "";
     },
     abrirStore(store, modo) {
       return db.transaction(store, modo).objectStore(store);
-    },
+    }
   },
   created() {
     //this.obtenerDatos();
-  },
+  }
 };
 </script>

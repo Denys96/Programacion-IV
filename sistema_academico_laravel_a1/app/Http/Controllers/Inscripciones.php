@@ -14,7 +14,7 @@ class Inscripciones extends Controller
      */
     public function index()
     {
-        //
+        return inscripcion::get();//select * from inscripcion
     }
 
     /**
@@ -35,7 +35,8 @@ class Inscripciones extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = Inscripcion::create($request->all())->id;//insert into inscripcion...
+        return response()->json(['id'=>$id], 200);
     }
 
     /**
@@ -46,7 +47,7 @@ class Inscripciones extends Controller
      */
     public function show(inscripcion $inscripcion)
     {
-        //
+        return $inscripcion;//select * from inscripcion where id = $id
     }
 
     /**
@@ -69,7 +70,8 @@ class Inscripciones extends Controller
      */
     public function update(Request $request, inscripcion $inscripcion)
     {
-        //
+        $inscripcion->update($request->all());//update inscripcion set ... where id = $id
+        return response()->json(['id'=>$request->id], 200);
     }
 
     /**
@@ -80,6 +82,7 @@ class Inscripciones extends Controller
      */
     public function destroy(inscripcion $inscripcion)
     {
-        //
+        $inscripcion->delete();//delete from inscripcion where id = $id
+        return response()->json(['id'=>$inscripcion->id], 200);
     }
 }

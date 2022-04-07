@@ -6254,19 +6254,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["form"],
   data: function data() {
     return {
       buscar: "",
-      inscripcions: [],
+      inscripciones: [],
       inscripcion: {
         accion: "nuevo",
         mostrar_msg: false,
@@ -6274,13 +6267,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         id: 0,
         idInscripcion: "",
         codigo: "",
-        materia1: "",
-        materia2: "",
-        materia3: "",
-        materia4: "",
-        materia5: "",
-        fecha: "",
-        ciclo: ""
+        nombre: "",
+        direccion: "",
+        telefono: "",
+        dui: ""
       }
     };
   },
@@ -6311,7 +6301,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                   _this.inscripcion.msg = "Inscripcion procesado ".concat(data.msg);
                 })["catch"](function (err) {
-                  _this.inscripcion.msg = "Error al procesar la inscripcion ".concat(err);
+                  _this.inscripcion.msg = "Error al procesar el inscripcion ".concat(err);
                 });
 
               case 2:
@@ -6333,11 +6323,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         _this2.obtenerDatos();
 
-        _this2.inscripcion.msg = "Inscripcion procesada con exito";
+        _this2.inscripcion.msg = "Inscripcion procesado con exito";
       };
 
       query.onerror = function (e) {
-        _this2.inscripcion.msg = "Error al procesar la inscripcion ".concat(e.target.error);
+        _this2.inscripcion.msg = "Error al procesar el inscripcion ".concat(e.target.error);
       };
     },
     buscandoInscripcion: function buscandoInscripcion() {
@@ -6346,7 +6336,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     eliminarInscripcion: function eliminarInscripcion(inscripcion) {
       var _this3 = this;
 
-      if (confirm("Esta seguro de eliminar la inscripcion ".concat(inscripcion.nombre, "?"))) {
+      if (confirm("Esta seguro de eliminar el inscripcion ".concat(inscripcion.nombre, "?"))) {
         inscripcion.accion = "eliminar";
         var store = this.abrirStore("inscripcion", "readwrite"),
             query = store["delete"](inscripcion.idInscripcion),
@@ -6359,11 +6349,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
           _this3.obtenerDatos();
 
-          _this3.inscripcion.msg = "Inscripcion eliminada con exito";
+          _this3.inscripcion.msg = "Inscripcion eliminado con exito";
         };
 
         query.onerror = function (e) {
-          _this3.inscripcion.msg = "Error al eliminar la inscripcion ".concat(e.target.error);
+          _this3.inscripcion.msg = "Error al eliminar el inscripcion ".concat(e.target.error);
         };
       }
 
@@ -6401,7 +6391,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }).then(function (res) {
             return res.json();
           }).then(function (data) {
-            _this4.inscripcions = data;
+            _this4.inscripciones = data;
             data.map(function (inscripcion) {
               var store = _this4.abrirStore("inscripcion", "readwrite"),
                   query = store.put(inscripcion);
@@ -6411,21 +6401,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               };
 
               query.onerror = function (e) {
-                console.log("Error al guardar la inscripcion ".concat(e.target.error));
+                console.log("Error al guardar el inscripcion ".concat(e.target.error));
               };
             });
           })["catch"](function (err) {
-            _this4.inscripcion.msg = "Error al guardar la inscripcion ".concat(err);
+            _this4.inscripcion.msg = "Error al guardar el inscripcion ".concat(err);
           });
         }
 
-        _this4.inscripcions = data.result.filter(function (inscripcion) {
+        _this4.inscripciones = data.result.filter(function (inscripcion) {
           return inscripcion.nombre.toLowerCase().indexOf(valor.toLowerCase()) > -1;
         });
       };
 
       data.onerror = function (e) {
-        _this4.inscripcion.msg = "Error al obtener las inscripciones ".concat(e.target.error);
+        _this4.inscripcion.msg = "Error al obtener los inscripciones ".concat(e.target.error);
       };
     },
     nuevoInscripcion: function nuevoInscripcion() {
@@ -6433,13 +6423,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.inscripcion.msg = "";
       this.inscripcion.idInscripcion = "";
       this.inscripcion.codigo = "";
-      this.inscripcion.materia1 = "";
-      this.inscripcion.materia2 = "";
-      this.inscripcion.materia3 = "";
-      this.inscripcion.materia4 = "";
-      this.inscripcion.materia5 = "";
-      this.inscripcion.fecha = "";
-      this.inscripcion.ciclo = "";
+      this.inscripcion.nombre = "";
+      this.inscripcion.direccion = "";
+      this.inscripcion.telefono = "";
+      this.inscripcion.dui = "";
     },
     abrirStore: function abrirStore(store, modo) {
       return db.transaction(store, modo).objectStore(store);
@@ -32019,7 +32006,14 @@ var render = function () {
           "div",
           { staticClass: "card text-white", attrs: { id: "carInscripcion" } },
           [
-            _vm._m(0),
+            _c("div", { staticClass: "card-header bg-primary" }, [
+              _vm._v("\n          Registro de Inscripciones\n          "),
+              _c("button", {
+                staticClass: "btn-close text-end",
+                attrs: { type: "button" },
+                on: { click: _vm.cerrarForm },
+              }),
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body text-dark" }, [
               _c(
@@ -32037,7 +32031,7 @@ var render = function () {
                 [
                   _c("div", { staticClass: "row p-1" }, [
                     _c("div", { staticClass: "col col-md-3" }, [
-                      _vm._v("Codigo:"),
+                      _vm._v("Codigo"),
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col col-md-4" }, [
@@ -32052,9 +32046,10 @@ var render = function () {
                         ],
                         staticClass: "form-control",
                         attrs: {
-                          title: "Ingrese el codigo",
-                          pattern: "[0-9]{3,10}",
+                          placeholder: "000",
+                          pattern: "[A-Z0-9]{3,10}",
                           required: "",
+                          title: "Codigo de inscripcion",
                           type: "text",
                         },
                         domProps: { value: _vm.inscripcion.codigo },
@@ -32076,7 +32071,7 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", { staticClass: "row p-1" }, [
                     _c("div", { staticClass: "col col-md-3" }, [
-                      _vm._v("Ciclo:"),
+                      _vm._v("Nombre"),
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col" }, [
@@ -32085,228 +32080,19 @@ var render = function () {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.inscripcion.ciclo,
-                            expression: "inscripcion.ciclo",
+                            value: _vm.inscripcion.nombre,
+                            expression: "inscripcion.nombre",
                           },
                         ],
-                        attrs: { list: "ciclo" },
-                        domProps: { value: _vm.inscripcion.ciclo },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.inscripcion,
-                              "ciclo",
-                              $event.target.value
-                            )
-                          },
-                        },
-                      }),
-                      _vm._v(" "),
-                      _vm._m(1),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row p-1" }, [
-                    _c("div", { staticClass: "col col-md-3" }, [
-                      _vm._v("Materia 1:"),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.inscripcion.materia_1,
-                            expression: "inscripcion.materia_1",
-                          },
-                        ],
-                        attrs: { list: "materia_1" },
-                        domProps: { value: _vm.inscripcion.materia_1 },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.inscripcion,
-                              "materia_1",
-                              $event.target.value
-                            )
-                          },
-                        },
-                      }),
-                      _vm._v(" "),
-                      _vm._m(2),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row p-1" }, [
-                    _c("div", { staticClass: "col col-md-3" }, [
-                      _vm._v("Materia 2:"),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.inscripcion.materia_2,
-                            expression: "inscripcion.materia_2",
-                          },
-                        ],
-                        attrs: { list: "materia_2" },
-                        domProps: { value: _vm.inscripcion.materia_2 },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.inscripcion,
-                              "materia_2",
-                              $event.target.value
-                            )
-                          },
-                        },
-                      }),
-                      _vm._v(" "),
-                      _vm._m(3),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row p-1" }, [
-                    _c("div", { staticClass: "col col-md-3" }, [
-                      _vm._v("Materia 3:"),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.inscripcion.materia_3,
-                            expression: "inscripcion.materia_3",
-                          },
-                        ],
-                        attrs: { list: "materia_3" },
-                        domProps: { value: _vm.inscripcion.materia_3 },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.inscripcion,
-                              "materia_3",
-                              $event.target.value
-                            )
-                          },
-                        },
-                      }),
-                      _vm._v(" "),
-                      _vm._m(4),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row p-1" }, [
-                    _c("div", { staticClass: "col col-md-3" }, [
-                      _vm._v("Materia 4:"),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.inscripcion.materia_4,
-                            expression: "inscripcion.materia_4",
-                          },
-                        ],
-                        attrs: { list: "materia_4" },
-                        domProps: { value: _vm.inscripcion.materia_4 },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.inscripcion,
-                              "materia_4",
-                              $event.target.value
-                            )
-                          },
-                        },
-                      }),
-                      _vm._v(" "),
-                      _vm._m(5),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row p-1" }, [
-                    _c("div", { staticClass: "col col-md-3" }, [
-                      _vm._v("Materia 5:"),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.inscripcion.materia_5,
-                            expression: "inscripcion.materia_5",
-                          },
-                        ],
-                        attrs: { list: "materia_5" },
-                        domProps: { value: _vm.inscripcion.materia_5 },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.inscripcion,
-                              "materia_5",
-                              $event.target.value
-                            )
-                          },
-                        },
-                      }),
-                      _vm._v(" "),
-                      _vm._m(6),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row p-1" }, [
-                    _c("div", { staticClass: "col col-md-3" }, [
-                      _vm._v("Fecha de Inscripcion:"),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col col-md-4" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.inscripcion.fecha,
-                            expression: "inscripcion.fecha",
-                          },
-                        ],
-                        staticClass: "form-control form-control-sm",
+                        staticClass: "form-control",
                         attrs: {
-                          title: "Ingrese la fecha",
-                          pattern: "{0000-00-00}",
+                          placeholder: "Nombre",
+                          pattern: "[A-Za-zÑñáéíóú ]{3,75}",
                           required: "",
-                          type: "date",
+                          title: "Nombre de inscripcion",
+                          type: "text",
                         },
-                        domProps: { value: _vm.inscripcion.fecha },
+                        domProps: { value: _vm.inscripcion.nombre },
                         on: {
                           input: function ($event) {
                             if ($event.target.composing) {
@@ -32314,7 +32100,207 @@ var render = function () {
                             }
                             _vm.$set(
                               _vm.inscripcion,
-                              "fecha",
+                              "nombre",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row p-1" }, [
+                    _c("div", { staticClass: "col col-md-3" }, [
+                      _vm._v("Materia 1"),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.inscripcion.materia1,
+                            expression: "inscripcion.materia1",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          placeholder: "Materia 1",
+                          pattern: "[A-Za-z0-9Ññáéíóú ]{3,100}",
+                          required: "",
+                          title: "Materia de inscripcion",
+                          type: "text",
+                        },
+                        domProps: { value: _vm.inscripcion.materia1 },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.inscripcion,
+                              "materia1",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row p-1" }, [
+                    _c("div", { staticClass: "col col-md-3" }, [
+                      _vm._v("Materia 2"),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.inscripcion.materia2,
+                            expression: "inscripcion.materia2",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          placeholder: "Materia 2",
+                          pattern: "[A-Za-z0-9Ññáéíóú ]{3,100}",
+                          required: "",
+                          title: "Materia de inscripcion",
+                          type: "text",
+                        },
+                        domProps: { value: _vm.inscripcion.materia2 },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.inscripcion,
+                              "materia2",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row p-1" }, [
+                    _c("div", { staticClass: "col col-md-3" }, [
+                      _vm._v("Materia 3"),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.inscripcion.materia3,
+                            expression: "inscripcion.materia3",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          placeholder: "Materia 3",
+                          pattern: "[A-Za-z0-9Ññáéíóú ]{3,100}",
+                          required: "",
+                          title: "Materia de inscripcion",
+                          type: "text",
+                        },
+                        domProps: { value: _vm.inscripcion.materia3 },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.inscripcion,
+                              "materia3",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row p-1" }, [
+                    _c("div", { staticClass: "col col-md-3" }, [
+                      _vm._v("Materia 4"),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.inscripcion.materia4,
+                            expression: "inscripcion.materia4",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          placeholder: "Materia 4",
+                          pattern: "[A-Za-z0-9Ññáéíóú ]{3,100}",
+                          required: "",
+                          title: "Materia de inscripcion",
+                          type: "text",
+                        },
+                        domProps: { value: _vm.inscripcion.materia4 },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.inscripcion,
+                              "materia4",
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row p-1" }, [
+                    _c("div", { staticClass: "col col-md-3" }, [
+                      _vm._v("Materia 5"),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.inscripcion.materia5,
+                            expression: "inscripcion.materia5",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          placeholder: "Materia 5",
+                          pattern: "[A-Za-z0-9Ññáéíóú ]{3,100}",
+                          required: "",
+                          title: "Materia de inscripcion",
+                          type: "text",
+                        },
+                        domProps: { value: _vm.inscripcion.materia5 },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.inscripcion,
+                              "materia5",
                               $event.target.value
                             )
                           },
@@ -32351,9 +32337,88 @@ var render = function () {
                           )
                         : _vm._e(),
                     ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row p-1" }, [
+                      _c("div", { staticClass: "col col-md-3" }, [
+                        _vm._v("Fecha"),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.inscripcion.fecha,
+                              expression: "inscripcion.fecha",
+                            },
+                          ],
+                          staticClass: "form-control form-control-sm",
+                          attrs: {
+                            title: "Ingrese la fecha",
+                            pattern: "{0000-00-00}",
+                            required: "",
+                            type: "date",
+                          },
+                          domProps: { value: _vm.inscripcion.fecha },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.inscripcion,
+                                "fecha",
+                                $event.target.value
+                              )
+                            },
+                          },
+                        }),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row p-1" }, [
+                      _c("div", { staticClass: "col col-md-3" }, [
+                        _vm._v("Ciclo"),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.inscripcion.ciclo,
+                              expression: "inscripcion.ciclo",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            placeholder: "ciclo",
+                            pattern: "[A-Za-zÑñáéíóú ]{3,75}",
+                            required: "",
+                            title: "Nombre de inscripcion",
+                            type: "text",
+                          },
+                          domProps: { value: _vm.inscripcion.ciclo },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.inscripcion,
+                                "ciclo",
+                                $event.target.value
+                              )
+                            },
+                          },
+                        }),
+                      ]),
+                    ]),
                   ]),
                   _vm._v(" "),
-                  _vm._m(7),
+                  _vm._m(0),
                 ]
               ),
             ]),
@@ -32370,7 +32435,7 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "card-header bg-primary" }, [
-              _vm._v("\n          Busqueda de Inscripcions\n          "),
+              _vm._v("\n      Busqueda de Inscripciones\n      "),
               _c("button", {
                 staticClass: "btn-close",
                 attrs: {
@@ -32387,8 +32452,8 @@ var render = function () {
               _c("table", { staticClass: "table table-dark table-hover" }, [
                 _c("thead", [
                   _c("tr", [
-                    _c("th", { attrs: { colspan: "9" } }, [
-                      _vm._v("\n                  Buscar:\n                  "),
+                    _c("th", { attrs: { colspan: "10" } }, [
+                      _vm._v("\n              Buscar:\n              "),
                       _c("input", {
                         directives: [
                           {
@@ -32414,12 +32479,12 @@ var render = function () {
                     ]),
                   ]),
                   _vm._v(" "),
-                  _vm._m(8),
+                  _vm._m(1),
                 ]),
                 _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.inscripcions, function (item) {
+                  _vm._l(_vm.inscripciones, function (item) {
                     return _c(
                       "tr",
                       {
@@ -32431,21 +32496,23 @@ var render = function () {
                         },
                       },
                       [
-                        _c("td", [_vm._v(_vm._s(item.codigo))]),
+                        _c("td", [_vm._v(_vm._s(_vm.inscripcion.codigo))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.materia_1))]),
+                        _c("td", [_vm._v(_vm._s(_vm.inscripcion.nombre))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.materia_2))]),
+                        _c("td", [_vm._v(_vm._s(_vm.inscripcion.ciclo))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.materia_3))]),
+                        _c("td", [_vm._v(_vm._s(_vm.inscripcion.materia))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.materia_4))]),
+                        _c("td", [_vm._v(_vm._s(_vm.inscripcion.materia2))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.materia_5))]),
+                        _c("td", [_vm._v(_vm._s(_vm.inscripcion.materia3))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.fecha))]),
+                        _c("td", [_vm._v(_vm._s(_vm.inscripcion.materia4))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.matricula.label))]),
+                        _c("td", [_vm._v(_vm._s(_vm.inscripcion.materia5))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(_vm.inscripcion.fecha))]),
                         _vm._v(" "),
                         _c("td", [
                           _c(
@@ -32458,11 +32525,7 @@ var render = function () {
                                 },
                               },
                             },
-                            [
-                              _vm._v(
-                                "\n                    Eliminar\n                  "
-                              ),
-                            ]
+                            [_vm._v("Eliminar")]
                           ),
                         ]),
                       ]
@@ -32479,189 +32542,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header bg-primary" }, [
-      _vm._v("\n          Registro de Inscripcions\n          "),
-      _c("button", {
-        staticClass: "btn-close text-end",
-        attrs: {
-          type: "button",
-          "data-bs-dismiss": "alert",
-          "data-bs-target": "#carInscripcion",
-          "aria-label": "Close",
-        },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "ciclo" } }, [
-      _c("option", { attrs: { value: "Ciclo I" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ciclo II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ciclo III" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ciclo IV" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ciclo V" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ciclo VI" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ciclo VII" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ciclo VIII" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ciclo IX" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ciclo X" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "materia_1" } }, [
-      _c("option", { attrs: { value: "Programacion II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Programacion VI" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas III" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas I" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ingenieria de Software" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Principios de Electronica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Formacion Transversal" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Sistemas Operativos" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "materia_2" } }, [
-      _c("option", { attrs: { value: "Programacion II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Programacion VI" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas III" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas I" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ingenieria de Software" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Principios de Electronica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Formacion Transversal" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Sistemas Operativos" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "materia_3" } }, [
-      _c("option", { attrs: { value: "Programacion II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Programacion VI" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas III" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas I" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ingenieria de Software" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Principios de Electronica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Formacion Transversal" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Sistemas Operativos" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "materia_4" } }, [
-      _c("option", { attrs: { value: "Programacion II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Programacion VI" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas III" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas I" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ingenieria de Software" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Principios de Electronica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Formacion Transversal" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Sistemas Operativos" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "materia_5" } }, [
-      _c("option", { attrs: { value: "Programacion II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Programacion VI" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas III" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Matematicas I" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Ingenieria de Software" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Principios de Electronica" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Formacion Transversal" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Sistemas Operativos" } }),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -32687,19 +32567,21 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [_vm._v("CODIGO")]),
       _vm._v(" "),
-      _c("th", [_vm._v("CICLO")]),
+      _c("th", [_vm._v("Nombre")]),
       _vm._v(" "),
-      _c("th", [_vm._v("MATERIA 1")]),
+      _c("th", [_vm._v("Ciclo")]),
       _vm._v(" "),
-      _c("th", [_vm._v("MATERIA 2")]),
+      _c("th", [_vm._v("Materia 1")]),
       _vm._v(" "),
-      _c("th", [_vm._v("MATERIA 3")]),
+      _c("th", [_vm._v("Materia 2")]),
       _vm._v(" "),
-      _c("th", [_vm._v("MATERIA 4")]),
+      _c("th", [_vm._v("Materia 3")]),
       _vm._v(" "),
-      _c("th", [_vm._v("MATERIA 5")]),
+      _c("th", [_vm._v("Materia 4")]),
       _vm._v(" "),
-      _c("th", [_vm._v("FECHA")]),
+      _c("th", [_vm._v("Materia 5")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Fecha_I")]),
       _vm._v(" "),
       _c("th"),
     ])
