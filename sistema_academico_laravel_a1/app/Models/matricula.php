@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class matricula extends Model
 {
-    protected $fiable =['idMatricula','fecham','ciclo'];
+    protected $fillable =['idMatricula','alumno','fecham','ciclo'];
 }

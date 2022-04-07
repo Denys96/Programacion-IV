@@ -71,7 +71,7 @@ class Materias extends Controller
     public function update(Request $request, materia $materia)
     {
         $materia->update($request->all()); //update materia set ... where id = $id
-        return response()->json(['id'=>true], 200);
+        return response()->json(['id'=>$request->id], 200);
     }
 
     /**

@@ -1,110 +1,115 @@
 <template>
-    <div id="appNota">
-        <div class="card text-white" id="carNota">
-            <div class="card-header bg-primary">
+        <div id="appNota">
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="card text-white" id="carNota">
+                    <div class="card-header bg-primary">
                 Registro de Notas
                 <button type="button" class="btn-close text-end" @click="cerrarForm"></button>
             </div>
             <div class="card-body text-dark">
                 <form method="post" @submit.prevent="guardarNota" @reset="nuevoNota">
                     <div class="row p-1">
-                        <div class="col col-md-2">Codigo:</div>
-                        <div class="col col-md-2">
+                        <div class="col col-md-3">Codigo:</div>
+                        <div class="col col-md-4">
                             <input title="Ingrese el codigo" v-model="nota.codigo" pattern="[0-9]{3,10}" required type="text" class="form-control">
                         </div>
                     </div>
                     <div class="row p-1">
-                        <div class="col col-md-2">Nombre:</div>
-                        <div class="col col-md-3">
+                        <div class="col col-md-3">Nombre:</div>
+                        <div class="col">
                             <input title="Ingrese el nombre" v-model="nota.nombre" pattern="[A-Za-zñÑáéíóúü ]{3,75}" required type="text" class="form-control">
                         </div>
                     </div>
                     <div class="row p-1">
-                        <div class="col col-md-2">Nota 1:</div>
-                        <div class="col col-md-2">
-                            <input title="Nota 1" v-model="nota.notas_1"  required type="text" class="form-control">
+                        <div class="col col-md-3">Nota 1:</div>
+                        <div class="col">
+                            <input title="Nota 1" v-model="nota.notas1"  required type="text" class="form-control">
                         </div>
                     </div>
                     <div class="row p-1">
-                        <div class="col col-md-2">Notas 2:</div>
-                        <div class="col col-md-2">
-                            <input title="Notas 2" v-model="nota.notas_2"  required type="text" class="form-control">
+                        <div class="col col-md-3">Notas 2:</div>
+                        <div class="col">
+                            <input title="Notas 2" v-model="nota.notas2"  required type="text" class="form-control">
                         </div>
                     </div>
                     <div class="row p-1">
-                        <div class="col col-md-2">Notas 3:</div>
-                        <div class="col col-md-2">
-                            <input title="Notas 3" v-model="nota.notas_3"  required type="text" class="form-control">
-                        </div>
-                    </div>
-                     <div class="row p-1">
-                        <div class="col col-md-2">Notas 4:</div>
-                        <div class="col col-md-2">
-                            <input title="Notas 4" v-model="nota.notas_4"  required type="text" class="form-control">
-                        </div>
-                    </div>
-                     <div class="row p-1">
-                        <div class="col col-md-2">Notas 5:</div>
-                        <div class="col col-md-2">
-                            <input title="Notas 5" v-model="nota.notas_5"  required type="text" class="form-control">
+                        <div class="col col-md-3">Notas 3:</div>
+                        <div class="col">
+                            <input title="Notas 3" v-model="nota.notas3"  required type="text" class="form-control">
                         </div>
                     </div>
                     <div class="row p-1">
-                        <div class="col col-md-5 text-center">
-                            <div v-if="nota.mostrar_msg" class="alert alert-primary alert-dismissible fade show" role="alert">
-                                {{ nota.msg }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="col col-md-3">Notas 4:</div>
+                        <div class="col">
+                            <input title="Notas 4" v-model="nota.notas4"  required type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col col-md-3">Notas 5:</div>
+                        <div class="col col-md-4">
+                            <input title="Notas 5" v-model="nota.notas5"  required type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                                <div class="col text-center">
+                                    <div v-if="nota.mostrar_msg" class="alert alert-primary alert-dismissible fade show" role="alert">
+                                        {{ nota.msg }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row m-2">
+                                <div class="col text-center">
+                                    <input class="btn btn-success" type="submit" value="Guardar">
+                                    <input class="btn btn-warning" type="reset" value="Nuevo">
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row m-2">
-                        <div class="col col-md-5 text-center">
-                            <input class="btn btn-success" type="submit" value="Guardar">
-                            <input class="btn btn-warning" type="reset" value="Nuevo">
-                        </div>
+                </div>
+            </div>
+            <div class="col col-md-8">
+                <div class="card text-white" id="carBuscarNota">
+                    <div class="card-header bg-primary">
+                        Busqueda de Notas
+                        <button type="button" @click="cerrarForm" class="btn-close" data-bs-dismiss="alert" data-bs-target="#carBuscarNota" aria-label="Close"></button>
                     </div>
-                </form>
-            </div>
-        </div>
-        <div class="card text-white" id="carBuscarNota">
-            <div class="card-header bg-primary">
-                Busqueda de Notas
-                <button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-target="#carBuscarNota" aria-label="Close"></button>
-            </div>
-            <div class="card-body">
-                <table class="table table-dark table-hover">
-                    <thead>
-                        <tr>
-                            <th colspan="6">
-                                Buscar: <input @keyup="buscandoNota" v-model="buscar" placeholder="buscar aqui" class="form-control" type="text" >
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>CODIGO</th>
-                            <th>NOMBRE</th>
-                            <th>NOTA 1</th>
-                            <th>NOTA 2</th>
-                            <th>NOTA 3</th>
-                            <th>NOTA 4</th>
-                            <th>NOTA 5</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="item in notas" @click='modificarNota( item )' :key="item.idNota">
-                            <td>{{item.codigo}}</td>
-                            <td>{{item.nombre}}</td>
-                            <td>{{item.notas_1}}</td>
-                            <td>{{item.notas_2}}</td>
-                            <td>{{item.notas_3}}</td>
-                            <td>{{item.notas_4}}</td>
-                            <td>{{item.notas_5}}</td>
-                            <td>
-                                <button class="btn btn-danger" @click="eliminarNota(item)">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="card-body">
+                        <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th colspan="8">
+                                        Buscar: <input @keyup="buscandoNota" v-model="buscar" placeholder="buscar aqui" class="form-control" type="text" >
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>CODIGO</th>
+                                    <th>NOMBRE</th>
+                                    <th>NOTA 1</th>
+                                    <th>NOTA 2</th>
+                                    <th>NOTA 3</th>
+                                    <th>NOTA 4</th>
+                                    <th>NOTA 5</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in notas" @click='modificarNota( item )' :key="item.idNota">
+                                    <td>{{item.codigo}}</td>
+                                    <td>{{item.nombre}}</td>
+                                    <td>{{item.notas1}}</td>
+                                    <td>{{item.notas2}}</td>
+                                    <td>{{item.notas3}}</td>
+                                    <td>{{item.notas4}}</td>
+                                    <td>{{item.notas5}}</td>
+                                    <td>
+                                        <button class="btn btn-danger" @click="eliminarNota(item)">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -125,11 +130,11 @@
                     idNota : '',
                     codigo: '',
                     nombre: '',
-                    notas_1: '',
-                    notas_2: '',
-                    notas_3: '',
-                    notas_4: '',
-                    notas_5: ''
+                    notas1: '',
+                    notas2: '',
+                    notas3: '',
+                    notas4: '',
+                    notas5: ''
                 }
             }
         },
@@ -241,11 +246,11 @@
                 this.nota.idNota = '';
                 this.nota.codigo = '';
                 this.nota.nombre = '';
-                this.nota.notas_1 = '';
-                this.nota.notas_2 = '';
-                this.nota.notas_3 = '';
-                this.nota.notas_4 = '';
-                this.nota.notas_5 = '';
+                this.nota.notas1 = '';
+                this.nota.notas2 = '';
+                this.nota.notas3 = '';
+                this.nota.notas4 = '';
+                this.nota.notas5 = '';
             },
             abrirStore(store, modo){
                 return db.transaction(store, modo).objectStore(store);

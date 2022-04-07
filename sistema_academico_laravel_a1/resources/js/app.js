@@ -27,6 +27,7 @@ Vue.component('alumno-component', require('./components/AlumnoComponent.vue').de
 Vue.component('docente-component', require('./components/DocenteComponent.vue').default);
 Vue.component('materia-component', require('./components/MateriaComponent.vue').default);
 Vue.component('matricula-component', require('./components/MatriculaComponent.vue').default);
+Vue.component('inscripcion-component', require('./components/InscripcionComponent.vue').default);
 Vue.component('notas-component', require('./components/NotasComponent.vue').default);
 
 
@@ -43,9 +44,10 @@ const app = new Vue({
             alumno:{mostrar:false},
             materia:{mostrar:false},
             docente:{mostrar:false},
-            nota:{mostrar:false},
             matricula:{mostrar:false},
-            anotar:{mostrar:false},
+            inscripcion:{mostrar:false},
+            nota:{mostrar:false},
+            
         }
     },
     methods:{
