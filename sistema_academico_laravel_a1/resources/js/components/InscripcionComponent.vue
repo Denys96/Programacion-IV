@@ -220,7 +220,7 @@
               <th>Materia 3</th>
               <th>Materia 4</th>
               <th>Materia 5</th>
-              <th>Fecha_I</th>
+              <th>Fecha Inscripcion</th>
               <th></th>
             </tr>
           </thead>
