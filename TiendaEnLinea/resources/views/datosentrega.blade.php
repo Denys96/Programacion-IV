@@ -129,10 +129,10 @@
     Resumen de compra
   </div>
   <div class="card-body">
-    <h5 class="card-title">Sub total: ${{$total}}.MX</h5>
+    <h5 class="card-title">Sub total: ${{$total}}.USD</h5>
    <p class="card-text" style="color:green;">¡Envio gratis!  0</p>
    <strong>
-   <p class="card-text">Total de contado: ${{$total}}.MX</p><br></strong>
+   <p class="card-text">Total de contado: ${{$total}}.USD</p><br></strong>
    <p style="background-color: grey;">*La fecha de entrega puede cambiar por la disponibilidad del producto, tu ubicación o la forma de pago.</p>
    <strong>Entrega a domicilio</strong>
   <strong style="color:green;">Llega entre el 22 y el 27 de julio*</strong> 
@@ -163,7 +163,7 @@
          <div class="card-body">
       <center>
         <a href="{{route('client.show',$carrito['idproduct'])}}" style="color: black;"><h5 class="card-title">{{$carrito['name']}}</h5></a>
-       <a href="{{route('client.show',$carrito['idproduct'])}}"  style="color: black;"> <p class="card-text">$ {{$carrito['price']}}. MX</p></a>
+       <a href="{{route('client.show',$carrito['idproduct'])}}"  style="color: black;"> <p class="card-text">$ {{$carrito['price']}}. USD</p></a>
        {{$carrito['quantity']}}
         </center>
       </div>

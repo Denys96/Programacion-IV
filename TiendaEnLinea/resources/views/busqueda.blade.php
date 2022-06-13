@@ -31,7 +31,7 @@
         <div class="card-body">
          <center>
         <a href="{{route('client.show',$result->idproduct)}}" style="color: black;"><h5 class="card-title">{{$result->name}}</h5></a>
-       <a href="{{route('client.show',$result->idproduct)}}"  style="color: black;"> <p class="card-text">$ {{$result->price}}. MX</p></a>
+       <a href="{{route('client.show',$result->idproduct)}}"  style="color: black;"> <p class="card-text">$ {{$result->price}}. USD</p></a>
         </center>
         </div>
       </div>

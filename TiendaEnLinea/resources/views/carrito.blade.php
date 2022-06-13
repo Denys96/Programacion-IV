@@ -38,7 +38,7 @@
        <div class="card-body"> 
         <center>
         <a href="{{route('client.show',$product->idproduct)}}" style="color: black;"><h5 class="card-title">{{$product->name}}</h5></a>
-       <a href="{{route('client.show',$product->idproduct)}}"  style="color: black;"> <p class="card-text">$ {{$product->price}}. MX</p></a>
+       <a href="{{route('client.show',$product->idproduct)}}"  style="color: black;"> <p class="card-text">$ {{$product->price}}. USD</p></a>
         </center>
       </div>
     </div>
@@ -101,14 +101,14 @@
     </div>
  
      <div class="col align-self-end">
-     ${{$carrito['price']}}.MX
+     ${{$carrito['price']}}.USD
     </div>
      <div class="col align-self-end">
    {{$carrito['quantity']}}
     <!--  <input type="number" name="cantidad" value="1" style="width: 50px;"> -->
     </div>
      <div class="col align-self-end tr" >
-       ${{$carrito['total']}}.MX
+       ${{$carrito['total']}}.USD
     </div>
   </div>
 
@@ -121,7 +121,11 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Compra segura</h5>
-        <p class="card-text">Necesitas ayuda? llamanos 7474674674</p>
+        <p class="card-text">Necesitas ayuda?
+          <a href="https://api.whatsapp.com/send?phone=72770271&text=hola,%20qué%20tal?">
+            Enviar mensaje
+          </a>
+        </p>
        
       </div>
     </div>
@@ -130,9 +134,9 @@
     <div class="card"> <center>
       <div class="card-body">
         <h5 class="card-title">Resumen de compra</h5>
-        <p class="card-text">sub total:${{$total}}.MX</p>
+        <p class="card-text">sub total:${{$total}}.USD</p>
         <p class="card-text" style="color:green;">¡Envio gratis!  0</p>
-        <p class="card-text"><strong>Total de contado:  ${{$total}}.MX</strong></p>
+        <p class="card-text"><strong>Total de contado:  ${{$total}}.USD</strong></p>
         <a href="{{route('client.data')}}" class="btn btn-primary" style="width: 100%;">Pagar</a>
         <a href="{{url('/')}}" >Seguir comprando</a></center>
       </div>

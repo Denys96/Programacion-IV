@@ -183,7 +183,7 @@
    @endforeach 
     @foreach ($images as $image)
       <div class="col-md-3 tr " style="margin-bottom: 10px;">
-            <img src="{{asset('storage').'/'.$image->name}}" width="250" height="200"> 
+        <img src="{{asset('storage').'/'.$image->name}}" width="250" height="200">
              
             <div class="d-none">{{$image->name}}</div>
              <div class="d-none">

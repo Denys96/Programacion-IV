@@ -91,10 +91,10 @@
         <li class="nav-item">
            <strong class="nav-link active descripcion" id="d" style="cursor: pointer;">Descripción </strong>
         </li>
-       <!--  <li class="nav-item">
+        <li class="nav-item">
            
             <strong class="nav-link caracteristicas" id="c" style="cursor: pointer;">Caracteristicas</strong>
-        </li> -->
+        </li> 
         
       </ul>
     </div>
@@ -116,9 +116,9 @@
 </div>
 
     <!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
-</button> -->
+</button> 
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -140,7 +140,7 @@
 </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src=storage integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
 

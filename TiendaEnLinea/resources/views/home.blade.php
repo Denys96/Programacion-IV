@@ -35,7 +35,7 @@
                                 <button class="btn btn-success">Enviado</button>
                             </form>
                          </div>
-                         <!--  <div class="col">
+                           <div class="col">
                             <form action="{{route('home.cancel')}}" method="POST">
                                 @csrf
                                 @method('PUT')
@@ -43,7 +43,7 @@
                                
                                 <button class="btn btn-warning">Cancelar</button>
                             </form>
-                         </div> -->
+                         </div> 
                           <div class="col">
                             <form action="{{route('home.destroy')}}" method="POST">
                                 @csrf

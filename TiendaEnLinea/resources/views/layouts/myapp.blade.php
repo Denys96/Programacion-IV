@@ -85,23 +85,24 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" style="color: white;"  href="#">Tel 6335633 </a>
+          <a ></a>
+          <a href="https://api.whatsapp.com/send?phone=72770271&text=hola,%20qué%20tal?"> Enviar mensaje </a>
         </li>
       <li class="nav-item">
           <a class="nav-link  " aria-current="page" style="color: white;" href="#">Politicas de uso</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link  " aria-current="page" style="color: white;" href="#"> 2021 © Everlever todos los derechos reservados</a>
+          <a class="nav-link  " aria-current="page" style="color: white;" href="#"> 2022 © ARTIA todos los derechos reservados</a>
         </li>
       </ul>
    
     </div>
   </div>
 </nav>
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> 
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- <!-- <script>
+ <script>
      function add() {
             $.ajax({
                type:'POST',
@@ -112,6 +113,6 @@
                }
             })
          }
-      </script> -->
+      </script> 
 </body>
 </html>

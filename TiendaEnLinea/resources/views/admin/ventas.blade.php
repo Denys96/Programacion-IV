@@ -16,7 +16,7 @@
                  @endforeach
                   @foreach ($sells as $sell)
                  <p><strong>Articulos comprados: </strong>{{$sell->article}} </p>
-                  <p><strong>Total de la compra:</strong> ${{$sell->total}}.MX </p>
+                  <p><strong>Total de la compra:</strong> ${{$sell->total}}.USD </p>
                   @endforeach
                   <a href="/home">Regresar</a>
                 </div>
